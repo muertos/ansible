@@ -1,0 +1,9 @@
+---
+- hosts: work-desktop
+  become: yes
+  tasks:
+  - name: 
+    yum:
+     name: '*'
+     state: latest
+     update_cache: yes
