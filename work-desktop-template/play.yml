@@ -21,3 +21,4 @@
      state: latest
 
 # [todo] How are packages that require a repository installation handled?
+# [todo] How can known configuration be copied?
