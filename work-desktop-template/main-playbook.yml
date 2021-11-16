@@ -1,0 +1,42 @@
+---
+# Installs packages needed for work desktop
+# Copies autokey configuration into place using a handler if autokey-gtk is
+# installed
+
+# [todo] How are packages that require a repository installation handled?
+
+- hosts: work-desktop
+  tasks:
+
+  - name: Update apt, install latest version of autokey-gtk
+    apt:
+      name: autokey-gtk
+      update_cache: yes # seems an update is required before packages are installed
+      state: latest
+    become: yes
+    notify: Copy autokey configuration into place
+
+  - name: Install latest version of copyq
+    apt:
+      name: copyq
+      state: latest
+    become: yes
+
+  - name: Install latest version of keepassxc
+    apt:
+      name: keepassxc
+      state: latest
+    become: yes
+
+  - name: Install latest version of piper
+    apt:
+      name: piper
+      state: latest
+    become: yes
+
+  handlers:
+    - name: Copy autokey configuration into place
+      ansible.posix.synchronize:
+        src: autokey-data/
+        dest: ~/.config/autokey/
+        #set_remote_user: no
