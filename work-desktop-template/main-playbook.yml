@@ -9,7 +9,7 @@
   tasks:
 
   - name: Update apt, install latest version of autokey-gtk
-    apt:
+    ansible.builtin.apt:
       name: autokey-gtk
       update_cache: yes # seems an update is required before packages are installed
       state: latest
@@ -17,19 +17,19 @@
     notify: Copy autokey configuration into place
 
   - name: Install latest version of copyq
-    apt:
+    ansible.builtin.apt:
       name: copyq
       state: latest
     become: yes
 
   - name: Install latest version of keepassxc
-    apt:
+    ansible.builtin.apt:
       name: keepassxc
       state: latest
     become: yes
 
   - name: Install latest version of piper
-    apt:
+    ansible.builtin.apt:
       name: piper
       state: latest
     become: yes
@@ -39,4 +39,3 @@
       ansible.posix.synchronize:
         src: autokey-data/
         dest: ~/.config/autokey/
-        #set_remote_user: no
