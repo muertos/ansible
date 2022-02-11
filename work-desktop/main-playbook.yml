@@ -2,6 +2,8 @@
 # Installs packages needed for work desktop
 # Copies autokey configuration into place using a handler if autokey-gtk is
 # installed
+# Usage: ansible-playbook -i hosts -u root main-playbook.yml
+# May need to `ansible-galaxy collection install -r requirements.yml`
 
 # [todo] How are packages that require a repository installation handled?
 
