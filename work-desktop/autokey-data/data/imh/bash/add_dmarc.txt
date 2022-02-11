@@ -1,0 +1,20 @@
+#!/bin/bash
+
+add_dmarc() {
+# adds standard dmarc to all zone files in /var/named
+# this does NOT cover subdomains!
+if [ ! -d /var/named.bk$(date +%F) ]; then
+    cp -r /var/named{,.bk$(date +%F)}
+    for i in /var/named/*.db
+    do
+        if ! grep -i "dmarc" "$i" 1>/dev/null; then
+            echo "Adding DMARC to $i ..."
+            echo -e "_dmarc\t14400\tIN\tTXT\t\"v=DMARC1; p=none; sp=none; rf=afrf; pct=100; ri=86400\"" >> "$i"
+        else
+            echo "DMARC already exists for $i ..."
+        fi
+    done
+else
+    echo "/var/named.bk$(date +%F) exists, exiting ..."
+fi
+}

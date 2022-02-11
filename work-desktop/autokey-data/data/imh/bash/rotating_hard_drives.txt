@@ -1,0 +1,1 @@
+cat /sys/block/sd{a,b}/queue/rotational

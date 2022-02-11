@@ -1,0 +1,1 @@
+for i in {01..31}; do echo "$i"; sar -q -f /var/log/sa/sa"$i" | sort -nrk5,5 | head -1; echo; done

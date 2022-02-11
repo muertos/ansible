@@ -1,0 +1,1 @@
+source ~/imh/venv/openstackclient/bin/activate && source ~/Downloads/admin-openrc-disaster-recovery.sh

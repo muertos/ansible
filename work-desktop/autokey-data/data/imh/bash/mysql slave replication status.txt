@@ -1,0 +1,1 @@
+mysql -e "SHOW SLAVE STATUS\G;" | grep -P "Slave_IO_Running\: Yes|Slave_SQL_Running\: Yes"

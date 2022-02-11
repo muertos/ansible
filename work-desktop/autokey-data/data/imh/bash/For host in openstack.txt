@@ -1,0 +1,1 @@
+for host in $(grep "\.local " /etc/hosts | awk '{print $2}'); do echo $host; ssh -i ~/.ssh/fm-deploy root@$host ""; echo; done

@@ -1,0 +1,20 @@
+#!/bin/bash
+import_all() {
+if [[ -d "$1" ]]; then
+  for file in "$1"/*.sql; do
+    db=$(basename $file .sql)
+    if [[ "$db" == "mysql" ]]; then
+      echo "mysql database found! are you sure you want to overwrite? y/n"
+      read input
+      if [[ $input == "n" ]]; then
+        exit 1
+      fi
+    fi
+    echo "mysql $db < $file running..."
+    mysql $db < $file
+  done
+else
+  echo "$1 does not exist, exiting..."
+  exit 1
+fi
+}

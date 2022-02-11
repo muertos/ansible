@@ -1,0 +1,10 @@
+check_galera_synced() {
+  docker exec -it mariadb \
+      mysql -u root \
+      -p$(grep ^database_password /etc/kolla/passwords.yml | awk '{print $2}') \
+      -e "SHOW STATUS LIKE 'wsrep_local_state_comment';" \
+      -e "SHOW STATUS LIKE 'wsrep_cluster_status';" \
+      -e "SHOW STATUS LIKE 'wsrep_cluster_size';" \
+      -e "SHOW STATUS LIKE 'wsrep_ready';" \
+      -e "SHOW STATUS LIKE 'wsrep_connected';"
+}

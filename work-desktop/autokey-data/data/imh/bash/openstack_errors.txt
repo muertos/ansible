@@ -1,0 +1,10 @@
+openstack_errors() {
+# gets the latest 'error' messages for today's date from kolla in an openstack cloud
+    for path in /var/log/kolla/*; do
+        for log in $path/*; do
+            echo $log
+            grep -i error $log 2>/dev/null | tail -1 | grep -P '$(date +"%Y-%m-%d")|$(date +"%a %b %d")'
+            echo
+        done
+    done
+}

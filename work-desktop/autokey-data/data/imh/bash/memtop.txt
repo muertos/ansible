@@ -1,0 +1,1 @@
+ps -A -o "rss,cmd"|awk '{sum+=$1; print $1/1024,"M", $2} END {print "Total memory usage: ", sum/1024,"M"}' | sort -h

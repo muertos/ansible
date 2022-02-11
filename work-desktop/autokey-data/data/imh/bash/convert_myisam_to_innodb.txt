@@ -1,0 +1,1 @@
+for db in $(for i in $(grep ':' /etc/trueuserowners| awk -F':' '{print $1}'); do cpapi2 --user=$i MysqlFE listdbs | grep "db:"|awk '{print $2}'; done|sort|uniq); do echo "converting $db from MyISAM to InnoDB ..."; mysql $db -e "show table status where Engine='MyISAM';" | awk 'NR>1 {print "ALTER TABLE "$1" ENGINE = InnoDB;"}' | mysql $db; done

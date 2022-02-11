@@ -1,0 +1,5 @@
+docker cp fm-deploy:/opt/kolla-ansible /opt/kolla-ansible
+cd /opt/kolla-ansible
+virtualenv .venv
+source .venv/bin/activate
+pip install -r requirements.txt

@@ -1,0 +1,21 @@
+#!/bin/bash
+imaps() {
+# If you have issues authenticating b/c of special chars in pws, try surrounding your passwords in double quotes in the pw file
+# $1 is email list
+# email list should be in the format of
+# $acct $pw 
+# $acct2 $pw2
+# etc... where first acct and pw are source host and second acct and pw are destination host
+host_remote="$2"
+host_local="$3"
+dryrun="$4" # pass '--dry' to have imapsync do a dryrun
+while read -r acct pw acct2 pw2; do 
+  echo -e "--- Starting imapsync for $acct:$host_remote to $acct2:$host_local ---\n"
+  imapsync \
+  --host1 "$host_remote" --user1 "$acct" --password1 "$pw" \
+  --host2 "$host_local" --user2 "$acct2" --password2 "$pw2" \
+  --subscribeall \
+  "$dryrun"
+  echo
+done < "$1"
+}

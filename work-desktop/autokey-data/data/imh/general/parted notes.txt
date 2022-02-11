@@ -1,0 +1,11 @@
+# quick notes on parted use
+
+parted /dev/sdx
+ mklabel gpt
+ mkpart P ext4 1M -1
+ quit
+    
+#for a backup drive:
+UUID=a12fd222-c4c2-4f97-9e4c-c7c52d73bfdf	/backup	ext4	defaults	0	0
+#or for a second cPanel homedir:
+UUID=a12fd222-c4c2-4f97-9e4c-c7c52d73bfdf	/home2	ext4	defaults	0	0

@@ -1,0 +1,33 @@
+{
+    "type": "script",
+    "description": "randpwgen",
+    "store": {},
+    "modes": [
+        1
+    ],
+    "usageCount": 33,
+    "prompt": false,
+    "omitTrigger": false,
+    "showInTrayMenu": false,
+    "abbreviation": {
+        "abbreviations": [
+            ".rand"
+        ],
+        "backspace": true,
+        "ignoreCase": false,
+        "immediate": false,
+        "triggerInside": false,
+        "wordChars": "[\\w]"
+    },
+    "hotkey": {
+        "modifiers": [
+            "<ctrl>",
+            "<shift>"
+        ],
+        "hotKey": "f"
+    },
+    "filter": {
+        "regex": null,
+        "isRecursive": false
+    }
+}

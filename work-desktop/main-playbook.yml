@@ -8,7 +8,6 @@
 - hosts: work-desktop
   tasks:
 
-# Create one task to install a list of packages vs. repeating yourself?
   - name: Update apt, install latest version of autokey-gtk
     ansible.builtin.apt:
       name: autokey-gtk
@@ -17,35 +16,17 @@
     become: yes
     notify: Copy autokey configuration into place
 
-  - name: Install latest version of copyq
+  - name: Install latest version of the following packages
     ansible.builtin.apt:
-      name: copyq
+      name: "{{ item }}"
       state: latest
     become: yes
-
-  - name: Install latest version of keepassxc
-    ansible.builtin.apt:
-      name: keepassxc
-      state: latest
-    become: yes
-
-  - name: Install latest version of piper
-    ansible.builtin.apt:
-      name: piper
-      state: latest
-    become: yes
-    
-  - name: Install latest version of vim
-    ansible.builtin.apt:
-      name: vim
-      state: latest
-    become: yes
-    
-  - name: Install latest version of tmux
-    ansible.builtin.apt:
-      name: tmux
-      state: latest
-    become: yes
+    loop:
+      - keepassxc
+      - vim
+      - tmux
+      - copyq
+      - lutris
 
   handlers:
     - name: Copy autokey configuration into place

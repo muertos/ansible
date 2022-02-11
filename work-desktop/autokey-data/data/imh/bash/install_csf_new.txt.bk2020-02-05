@@ -1,0 +1,56 @@
+install_csf() {
+# should add the default inmotion ips from I guess the rpm repo
+  
+  cd /usr/src && wget https://download.configserver.com/csf.tgz && tar -xzf csf.tgz && cd csf
+  ./install.cpanel.sh
+  cd ~
+  
+  #configure /etc/csf/csf.conf with the following
+  sed -i -r \
+    -e '/^TESTING/s/1/0/' \
+    -e '/^VERBOSE /s/1/0/' \
+    -e '/^PT_LIMIT /s/[0-9]{1,}/120/' \
+    -e '/^PT_ALL_USERS /s/[0-9]{1,}/1/' \
+    -e '/^PT_USERPROC /s/[0-9]{1,}/0/' \
+    -e '/^PT_USERMEM /s/[0-9]{1,}/0/' \
+    -e '/^SYSLOG_CHECK /s/[0-9]{1,}/900/' \
+    -e '/^LF_SYMLINK /s/[0-9]{1,}/1/' \
+    -e '/^LF_SCRIPT_ALERT /s/[0-9]{1,}/1/' \
+    -e '/^RESTRICT_SYSLOG /s/[0-9]{1,}/2/' \
+    -e '/^LF_TRIGGER /s/[0-9]{1,}/5/' \
+    -e '/^LF_SSHD / s/[0-9]{1,}/1/' \
+    -e '/^LF_FTPD / s/[0-9]{1,}/1/' \
+    -e '/^LF_SMTPAUTH /s/[0-9]{1,}/1/' \
+    -e '/^LF_EXIMSYNTAX /s/[0-9]{1,}/1/' \
+    -e '/^LF_POP3D /s/[0-9]{1,}/1/2' \
+    -e '/^LF_IMAPD /s/[0-9]{1,}/1/' \
+    -e '/^LF_HTACCESS /s/[0-9]{1,}/1/' \
+    -e '/^LF_CPANEL /s/[0-9]{1,}/1/' \
+    -e '/^LF_MODSEC /s/[0-9]{1,}/1/' \
+    -e '/^TCP_IN /c\TCP_IN = "20,21,25,53,80,110,143,443,465,587,993,995,2082,2083,2086,2087,2095,2096,3306,30000:35000"' \
+    -e '/^TCP_OUT / c\TCP_OUT = "1:65535"' \
+    -e '/^UDP_OUT / c\UDP_OUT = "1:65535"' \
+    -e '/^UDP_IN /s/"/,33434:33529"/2' \
+    /etc/csf/csf.conf
+  
+  #check if we are in a VPS or dedicated server as denied IP limits will be different
+  if [[ ! -d '/proc/vz/vzaquota/' ]]; then
+   #on a dedicated server
+    sed -i.bk \
+      -e '/^DENY\_IP\_LIMIT \=/ s/\"[0-9]*\"/\"15000\"/' \
+      -e '/^DENY\_TEMP\_IP\_LIMIT \=/ s/\"[0-9]*\"/\"200\"/' \
+      /etc/csf/csf.conf
+  else
+    #on a VPS
+    sed -i.bk -e \
+      '/^DENY\_IP\_LIMIT \=/ s/\"[0-9]*\"/\"1000\"/' \
+      -e '/^DENY\_TEMP\_IP\_LIMIT \=/ s/\"[0-9]*\"/\"500\"/' \
+      /etc/csf/csf.conf
+  fi
+
+  # ensure resellers have CSF plugin in WHM
+  for reseller in $(cat /var/cpanel/resellers | awk -F':' {'print $1'})
+    do sed -i.bk "/$reseller/s/$/\,software\-ConfigServer\-csf/" /var/cpanel/resellers
+    echo -e "\n$reseller:0:USE,ALLOW,DENY,UNBLOCK" >> /etc/csf/csf.resellers
+  done
+}

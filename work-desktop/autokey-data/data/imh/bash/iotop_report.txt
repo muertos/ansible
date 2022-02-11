@@ -1,0 +1,1 @@
+for i in {1..1000}; do iotop -o -b -n 1 >> /root/iotop.out; echo -e "================\n" >> /root/iotop.out; sleep 1; done

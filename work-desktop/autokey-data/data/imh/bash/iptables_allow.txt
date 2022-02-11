@@ -1,0 +1,1 @@
+ip="";iptables -I INPUT -s "$ip" -j ACCEPT

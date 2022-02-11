@@ -1,0 +1,9 @@
+disable_plugs() {
+# $1 is original plugin path
+# $2 is temp plugin folder
+    for i in $(find $1 -mindepth 1 -maxdepth 1 -type d)
+        do 
+        mv -v $i $2
+        read -r stuff
+    done
+}
