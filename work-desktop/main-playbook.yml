@@ -29,6 +29,7 @@
       - tmux
       - copyq
       - lutris
+      - gnome-tweak-tool # if ubuntu + gnome
 
   handlers:
   - name: Copy autokey configuration into place
