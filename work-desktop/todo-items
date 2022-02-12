@@ -1,0 +1,2 @@
+copy other program's conf into place
+consider creating an os image that comes with certain things like ansible, vim, and git installed
