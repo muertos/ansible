@@ -18,7 +18,7 @@
     become: yes
     notify: Copy autokey configuration into place
 
-  - name: Install latest version of the following packages
+  - name: Install latest version of packages
     ansible.builtin.apt:
       name: "{{ item }}"
       state: latest
@@ -31,7 +31,7 @@
       - lutris
 
   handlers:
-    - name: Copy autokey configuration into place
-      ansible.posix.synchronize:
-        src: autokey-data/
-        dest: ~/.config/autokey/
+  - name: Copy autokey configuration into place
+    ansible.posix.synchronize:
+      src: autokey-data/
+      dest: ~/.config/autokey/
