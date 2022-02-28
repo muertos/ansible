@@ -23,6 +23,7 @@
       name: "{{ item }}"
       state: latest
     become: yes
+    # TODO: figure out how to be conditional based on host being used (desktop vs. laptop)
     loop:
       - keepassxc
       - vim
