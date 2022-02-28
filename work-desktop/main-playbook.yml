@@ -30,6 +30,7 @@
       - copyq
       - lutris # if laptop, don't install
       - gnome-tweak-tool # if ubuntu + gnome
+      - tree
 
   handlers:
   - name: Copy autokey configuration into place
