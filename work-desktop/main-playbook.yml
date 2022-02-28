@@ -28,7 +28,7 @@
       - vim
       - tmux
       - copyq
-      - lutris
+      - lutris # if laptop, don't install
       - gnome-tweak-tool # if ubuntu + gnome
 
   handlers:
