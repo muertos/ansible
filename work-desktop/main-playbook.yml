@@ -7,7 +7,7 @@
 
 # [todo] How are packages that require a repository installation handled?
 
-- hosts: work-desktop
+- hosts: localhost
   tasks:
 
   - name: Update apt, install latest version of autokey-gtk
