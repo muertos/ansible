@@ -32,7 +32,6 @@
       - lutris # if laptop, don't install
       - gnome-tweak-tool # if ubuntu + gnome
       - tree
-      - ia32-libs # if laptop, install
 
   handlers:
   - name: Copy autokey configuration into place
