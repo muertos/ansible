@@ -29,9 +29,10 @@
       - vim
       - tmux
       - copyq
-      - lutris # if laptop, don't install
+      #- lutris # if laptop, don't install
       - gnome-tweak-tool # if ubuntu + gnome
       - tree
+      - barrier
 
   handlers:
   - name: Copy autokey configuration into place
