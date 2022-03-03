@@ -33,6 +33,7 @@
       - gnome-tweak-tool # if ubuntu + gnome
       - tree
       - barrier
+      - net-tools
 
   handlers:
   - name: Copy autokey configuration into place
