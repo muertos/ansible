@@ -30,6 +30,9 @@
       - copyq
       - lutris
       - gnome-tweak-tool # if ubuntu + gnome
+    ansible.general.snap:
+      name:
+        - spotify
 
   handlers:
   - name: Copy autokey configuration into place
