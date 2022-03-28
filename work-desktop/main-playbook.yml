@@ -31,17 +31,14 @@
       - copyq
       #- lutris # if laptop, don't install
       - gnome-tweak-tool # if ubuntu + gnome
-<<<<<<< HEAD
-    ansible.general.snap:
-      name:
-        - spotify
-=======
       - tree
       - barrier
       - net-tools
       - curl
       - spotify
->>>>>>> e36354548ce2c84f8fd9c0159b2b2b6fedb7b2af
+    community.general.snap:
+      name:
+        - spotify
 
   handlers:
   - name: Copy autokey configuration into place
