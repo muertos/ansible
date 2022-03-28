@@ -35,6 +35,7 @@
       - barrier
       - net-tools
       - curl
+      - spotify
 
   handlers:
   - name: Copy autokey configuration into place
