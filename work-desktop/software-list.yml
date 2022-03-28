@@ -1,5 +1,6 @@
 ---
 software-list:
+ - barrier (https://github.com/debauchee/barrier.git)
  - keepassxc
  - autokeygtk
  - copyq
@@ -9,4 +10,4 @@ software-list:
  - lutris
  - btrfs-progs
  - tree
- - barrier
+ - sshd

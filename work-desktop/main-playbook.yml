@@ -7,7 +7,7 @@
 
 # [todo] How are packages that require a repository installation handled?
 
-- hosts: work-desktop
+- hosts: localhost
   tasks:
 
   - name: Update apt, install latest version of autokey-gtk
@@ -23,16 +23,25 @@
       name: "{{ item }}"
       state: latest
     become: yes
+    # TODO: figure out how to be conditional based on host being used (desktop vs. laptop)
     loop:
       - keepassxc
       - vim
       - tmux
       - copyq
-      - lutris
+      #- lutris # if laptop, don't install
       - gnome-tweak-tool # if ubuntu + gnome
+<<<<<<< HEAD
     ansible.general.snap:
       name:
         - spotify
+=======
+      - tree
+      - barrier
+      - net-tools
+      - curl
+      - spotify
+>>>>>>> e36354548ce2c84f8fd9c0159b2b2b6fedb7b2af
 
   handlers:
   - name: Copy autokey configuration into place
