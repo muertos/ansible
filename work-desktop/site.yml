@@ -27,7 +27,7 @@
       update_cache: yes # seems an update is required before packages are installed
       state: latest
     become: yes
-    notify: Copy autokey configuration into place
+    notify: Copy autokey configuration
 
   - name: Install packages
     ansible.builtin.apt:
