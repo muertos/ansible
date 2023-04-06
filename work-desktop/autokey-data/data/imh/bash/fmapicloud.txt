@@ -1,0 +1,1 @@
+curl -sX GET https://ash-eng-p1-fm.flexmetal.net/cloud/

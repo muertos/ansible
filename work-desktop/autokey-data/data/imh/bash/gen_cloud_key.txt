@@ -1,0 +1,10 @@
+# Gen key, use defaults
+ssh-keygen -t ed25519
+# Add public key to all nodes in cloud
+curl -X 'POST' \
+  'https://api.pod-1.flexmetal.net/v1/cloud/$(grep cloud_uuid /etc/node-agent/node-agent.yml | awk '{print $2}')/public_key' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "public_key": "$(cat /root/.ssh/id_ed25519.pub)"
+}'

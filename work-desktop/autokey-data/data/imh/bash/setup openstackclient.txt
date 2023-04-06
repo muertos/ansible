@@ -1,1 +1,1 @@
-virtualenv /etc/kolla/venv && source /etc/kolla/venv/bin/activate && pip install openstackclient && source /etc/kolla/admin-openrc.sh
+virtualenv /etc/kolla/.venv && source /etc/kolla/.venv/bin/activate; pip install --upgrade pip; pip install python-openstackclient ansible=="2.9" kolla-ansible=="11.0.0"; source /etc/kolla/admin-openrc.sh

@@ -1,0 +1,1 @@
+git remote set-url upstream --push no_push

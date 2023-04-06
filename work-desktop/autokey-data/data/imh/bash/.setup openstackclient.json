@@ -4,14 +4,14 @@
     "modes": [
         1
     ],
-    "usageCount": 0,
+    "usageCount": 3,
     "prompt": false,
     "omitTrigger": true,
     "matchCase": false,
     "showInTrayMenu": false,
     "abbreviation": {
         "abbreviations": [
-            ".setuposc"
+            ".osc"
         ],
         "backspace": true,
         "ignoreCase": false,

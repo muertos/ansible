@@ -1,11 +1,18 @@
 {
-    "type": "folder",
-    "title": "imh",
-    "modes": [],
+    "type": "phrase",
+    "description": "fmapicloud",
+    "modes": [
+        1
+    ],
     "usageCount": 0,
+    "prompt": false,
+    "omitTrigger": false,
+    "matchCase": false,
     "showInTrayMenu": false,
     "abbreviation": {
-        "abbreviations": [],
+        "abbreviations": [
+            ".cloud"
+        ],
         "backspace": true,
         "ignoreCase": false,
         "immediate": false,
@@ -19,5 +26,6 @@
     "filter": {
         "regex": null,
         "isRecursive": false
-    }
+    },
+    "sendMode": "kb"
 }

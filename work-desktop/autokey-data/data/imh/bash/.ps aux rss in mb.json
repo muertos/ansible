@@ -1,14 +1,21 @@
 {
-    "type": "folder",
-    "title": "imh",
-    "modes": [],
+    "type": "phrase",
+    "description": "ps aux; rss in mb",
+    "modes": [
+        1
+    ],
     "usageCount": 0,
+    "prompt": false,
+    "omitTrigger": false,
+    "matchCase": false,
     "showInTrayMenu": false,
     "abbreviation": {
-        "abbreviations": [],
+        "abbreviations": [
+            ".psrss"
+        ],
         "backspace": true,
         "ignoreCase": false,
-        "immediate": false,
+        "immediate": true,
         "triggerInside": false,
         "wordChars": "[\\w]"
     },
@@ -19,5 +26,6 @@
     "filter": {
         "regex": null,
         "isRecursive": false
-    }
+    },
+    "sendMode": "kb"
 }

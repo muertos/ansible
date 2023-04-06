@@ -1,11 +1,18 @@
 {
-    "type": "folder",
-    "title": "imh",
-    "modes": [],
-    "usageCount": 0,
+    "type": "phrase",
+    "description": "setup flexible",
+    "modes": [
+        1
+    ],
+    "usageCount": 2,
+    "prompt": false,
+    "omitTrigger": true,
+    "matchCase": false,
     "showInTrayMenu": false,
     "abbreviation": {
-        "abbreviations": [],
+        "abbreviations": [
+            ".flexible"
+        ],
         "backspace": true,
         "ignoreCase": false,
         "immediate": false,
@@ -19,5 +26,6 @@
     "filter": {
         "regex": null,
         "isRecursive": false
-    }
+    },
+    "sendMode": "kb"
 }

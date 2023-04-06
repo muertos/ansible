@@ -1,5 +1,13 @@
-docker cp fm-deploy:/opt/kolla-ansible /opt/kolla-ansible
-cd /opt/kolla-ansible
-virtualenv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+# Download Kolla Ansible stable/yoga
+cd /opt/
+git clone -b stable/yoga https://github.com/openstack/kolla-ansible.git
+
+# Copy contents of /opt/kolla-ansible-cli/* into kolla-ansible repository
+yes | cp -rv /opt/kolla-ansible-cli/* /opt/kolla-ansible/
+
+# Create Python virtualenv
+cd kolla-ansible
+python3 -m venv .venv && source .venv/bin/activate && pip install -U pip
+
+# Install requirements.txt, ansible-core, kolla-ansible
+pip install -r requirements.txt "ansible-core>=2.11,<2.12" .

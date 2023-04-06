@@ -1,11 +1,18 @@
 {
-    "type": "folder",
-    "title": "imh",
-    "modes": [],
-    "usageCount": 0,
+    "type": "phrase",
+    "description": "venv",
+    "modes": [
+        1
+    ],
+    "usageCount": 4,
+    "prompt": false,
+    "omitTrigger": false,
+    "matchCase": false,
     "showInTrayMenu": false,
     "abbreviation": {
-        "abbreviations": [],
+        "abbreviations": [
+            ".vnv"
+        ],
         "backspace": true,
         "ignoreCase": false,
         "immediate": false,
@@ -19,5 +26,6 @@
     "filter": {
         "regex": null,
         "isRecursive": false
-    }
+    },
+    "sendMode": "kb"
 }

@@ -1,0 +1,1 @@
+sed -i "/^debug/s/False/True/" /etc/kolla/nova-compute/nova.conf
