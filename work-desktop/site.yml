@@ -1,0 +1,43 @@
+---
+# Installs packages needed for work desktop
+# Copies autokey configuration into place using a handler if autokey-gtk is
+# installed
+# Usage: ansible-playbook -i hosts -u root main-playbook.yml
+# May need to `ansible-galaxy collection install -r requirements.yml`
+
+- hosts: localhost
+  vars:
+    software_list:
+     - autokeygtk
+     - barrier
+     - btrfs-progs
+     - copyq
+     - git
+     - keepassxc
+     - lutris
+     - sshd
+     - tmux
+     - tree
+     - vim
+
+  tasks:
+  - name: Update apt, install autokey-gtk
+    ansible.builtin.apt:
+      name: autokey-gtk
+      update_cache: yes # seems an update is required before packages are installed
+      state: latest
+    become: yes
+    notify: Copy autokey configuration into place
+
+  - name: Install packages
+    ansible.builtin.apt:
+      name: "{{ item }}"
+      state: latest
+    become: yes
+    loop: "{{ software_list }}"
+
+  handlers:
+  - name: Copy autokey configuration
+    ansible.posix.synchronize:
+      src: autokey-data/
+      dest: ~/.config/autokey/
