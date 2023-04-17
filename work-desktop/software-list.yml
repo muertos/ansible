@@ -7,7 +7,6 @@ software-list:
  - tmux
  - vim
  - git
- - lutris
- - btrfs-progs
  - tree
- - sshd
+ - ssh
+ - jq
